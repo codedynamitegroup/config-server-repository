@@ -39,6 +39,10 @@ core-service:
 #      mode: always
 
 spring:
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
   jpa:
     open-in-view: false
     show-sql: true
