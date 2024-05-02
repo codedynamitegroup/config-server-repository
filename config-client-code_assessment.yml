@@ -9,6 +9,10 @@ code-assessment-service:
   code-question-create-request-to-core-service-topic-name: code-question-create-request-to-core-service
 
 spring:
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
   jpa:
     open-in-view: false
     show-sql: true

@@ -39,6 +39,10 @@ course-service:
   create-notification-scheduler-fixed-rate: 1800000
 
 spring:
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
   jpa:
     open-in-view: false
     show-sql: true
