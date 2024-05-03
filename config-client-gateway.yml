@@ -35,10 +35,10 @@ spring:
 #                redis-rate-limiter.replenishRate: 5
 #                redis-rate-limiter.burstCapacity: 10
 ##                key-resolver: "#{@authHeaderResolver}"
-#            - name: CircuitBreaker
-#              args:
-#                name: coreServiceCircuitBreaker
-#                fallbackUri: forward:/fallback/core-fallback
+            - name: CircuitBreaker
+              args:
+                name: coreServiceCircuitBreaker
+                fallbackUri: forward:/fallback/core-fallback
         - id: auth-service
           uri: lb://auth-service
           predicates:
