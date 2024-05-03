@@ -85,7 +85,7 @@ spring:
                 name: codeAssessmentServiceCircuitBreaker
                 fallbackUri: forward:/fallback/code-assessment-fallback
   redis:
-    host: 127.0.0.1
+    host: discovery-service-1
     port: 6379
 
 #management:
