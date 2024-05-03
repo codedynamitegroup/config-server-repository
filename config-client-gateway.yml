@@ -34,10 +34,10 @@ spring:
               args:
                 redis-rate-limiter.replenishRate: 5
                 redis-rate-limiter.burstCapacity: 10
-                key-resolver: "#{@authHeaderResolver}"
+#                key-resolver: "#{@authHeaderResolver}"
             - name: CircuitBreaker
               args:
-                name: queryServiceCircuitBreaker
+                name: coreServiceCircuitBreaker
                 fallbackUri: forward:/fallback/core-fallback
         - id: auth-service
           uri: lb://auth-service
@@ -49,10 +49,10 @@ spring:
               args:
                 redis-rate-limiter.replenishRate: 5
                 redis-rate-limiter.burstCapacity: 10
-                key-resolver: "#{@authHeaderResolver}"
+#                key-resolver: "#{@authHeaderResolver}"
             - name: CircuitBreaker
               args:
-                name: queryServiceCircuitBreaker
+                name: authServiceCircuitBreaker
                 fallbackUri: forward:/fallback/auth-fallback
         - id: course-service
           uri: lb://course-service
@@ -64,10 +64,10 @@ spring:
               args:
                 redis-rate-limiter.replenishRate: 5
                 redis-rate-limiter.burstCapacity: 10
-                key-resolver: "#{@authHeaderResolver}"
+#                key-resolver: "#{@authHeaderResolver}"
             - name: CircuitBreaker
               args:
-                name: queryServiceCircuitBreaker
+                name: courseServiceCircuitBreaker
                 fallbackUri: forward:/fallback/course-fallback
         - id: code-assessment-service
           uri: lb://code-assessment-service
@@ -79,10 +79,10 @@ spring:
               args:
                 redis-rate-limiter.replenishRate: 5
                 redis-rate-limiter.burstCapacity: 10
-                key-resolver: "#{@authHeaderResolver}"
+#                key-resolver: "#{@authHeaderResolver}"
             - name: CircuitBreaker
               args:
-                name: queryServiceCircuitBreaker
+                name: codeAssessmentServiceCircuitBreaker
                 fallbackUri: forward:/fallback/code-assessment-fallback
   redis:
     host: 127.0.0.1
