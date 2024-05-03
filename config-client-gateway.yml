@@ -40,7 +40,9 @@ spring:
               args:
                 redis-rate-limiter.replenishRate: 5
                 redis-rate-limiter.burstCapacity: 10
-#                key-resolver: "#{@authHeaderResolver}"
+                request-rate-limiter:
+                  deny-empty-key: true
+            #                key-resolver: "#{@authHeaderResolver}"
             - name: CircuitBreaker
               args:
                 name: coreServiceCircuitBreaker
