@@ -19,12 +19,6 @@ spring:
       ribbon:
         enabled: false
     gateway:
-      globalcors:
-        corsConfigurations:
-          '[/**]':
-            allowedOrigins: "*"
-            allowedHeaders: "*"
-            allowedMethods: "*"
       discovery:
         locator:
           enabled: false
