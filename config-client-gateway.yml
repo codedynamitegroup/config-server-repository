@@ -28,8 +28,8 @@ spring:
           uri: lb://core-service
           predicates:
             - Path=/core-service/**
-#          filters:
-#            - RewritePath=/core-service/(?<path>.*), /$\{path}
+          filters:
+            - RewritePath=/core-service/(?<path>.*), /$\{path}
 #            - name: RequestRateLimiter
 #              args:
 #                redis-rate-limiter.replenishRate: 5
