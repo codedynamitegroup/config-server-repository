@@ -45,51 +45,51 @@ spring:
               args:
                 name: coreServiceCircuitBreaker
                 fallbackUri: forward:/fallback/core-fallback
-        - id: auth-service
-          uri: lb://auth-service
-          predicates:
-            - Path=/auth-service/**
-          filters:
-            - RewritePath=/auth-service/(?<path>.*), /$\{path}
-            - name: RequestRateLimiter
-              args:
-                redis-rate-limiter.replenishRate: 5
-                redis-rate-limiter.burstCapacity: 10
-#                key-resolver: "#{@authHeaderResolver}"
-            - name: CircuitBreaker
-              args:
-                name: authServiceCircuitBreaker
-                fallbackUri: forward:/fallback/auth-fallback
-        - id: course-service
-          uri: lb://course-service
-          predicates:
-            - Path=/course-service/**
-          filters:
-            - RewritePath=/course-service/(?<path>.*), /$\{path}
-            - name: RequestRateLimiter
-              args:
-                redis-rate-limiter.replenishRate: 5
-                redis-rate-limiter.burstCapacity: 10
-#                key-resolver: "#{@authHeaderResolver}"
-            - name: CircuitBreaker
-              args:
-                name: courseServiceCircuitBreaker
-                fallbackUri: forward:/fallback/course-fallback
-        - id: code-assessment-service
-          uri: lb://code-assessment-service
-          predicates:
-            - Path=/code-assessment-service/**
-          filters:
-            - RewritePath=/code-assessment-service/(?<path>.*), /$\{path}
-            - name: RequestRateLimiter
-              args:
-                redis-rate-limiter.replenishRate: 5
-                redis-rate-limiter.burstCapacity: 10
-#                key-resolver: "#{@authHeaderResolver}"
-            - name: CircuitBreaker
-              args:
-                name: codeAssessmentServiceCircuitBreaker
-                fallbackUri: forward:/fallback/code-assessment-fallback
+#        - id: auth-service
+#          uri: lb://auth-service
+#          predicates:
+#            - Path=/auth-service/**
+#          filters:
+#            - RewritePath=/auth-service/(?<path>.*), /$\{path}
+#            - name: RequestRateLimiter
+#              args:
+#                redis-rate-limiter.replenishRate: 5
+#                redis-rate-limiter.burstCapacity: 10
+##                key-resolver: "#{@authHeaderResolver}"
+#            - name: CircuitBreaker
+#              args:
+#                name: authServiceCircuitBreaker
+#                fallbackUri: forward:/fallback/auth-fallback
+#        - id: course-service
+#          uri: lb://course-service
+#          predicates:
+#            - Path=/course-service/**
+#          filters:
+#            - RewritePath=/course-service/(?<path>.*), /$\{path}
+#            - name: RequestRateLimiter
+#              args:
+#                redis-rate-limiter.replenishRate: 5
+#                redis-rate-limiter.burstCapacity: 10
+##                key-resolver: "#{@authHeaderResolver}"
+#            - name: CircuitBreaker
+#              args:
+#                name: courseServiceCircuitBreaker
+#                fallbackUri: forward:/fallback/course-fallback
+#        - id: code-assessment-service
+#          uri: lb://code-assessment-service
+#          predicates:
+#            - Path=/code-assessment-service/**
+#          filters:
+#            - RewritePath=/code-assessment-service/(?<path>.*), /$\{path}
+#            - name: RequestRateLimiter
+#              args:
+#                redis-rate-limiter.replenishRate: 5
+#                redis-rate-limiter.burstCapacity: 10
+##                key-resolver: "#{@authHeaderResolver}"
+#            - name: CircuitBreaker
+#              args:
+#                name: codeAssessmentServiceCircuitBreaker
+#                fallbackUri: forward:/fallback/code-assessment-fallback
   redis:
     host: 127.0.0.1
     port: 6379
