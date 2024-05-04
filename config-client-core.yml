@@ -115,6 +115,8 @@ springdoc:
     path: /api-docs
   swagger-ui:
     path: /swagger-ui.html
+    # Update configUrl to point to the existing SpringDoc endpoint
+    configUrl: /api-docs/swagger-config
     display-request-duration: true
     groups-order: DESC
     operationsSorter: method
