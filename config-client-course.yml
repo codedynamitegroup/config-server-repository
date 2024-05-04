@@ -86,6 +86,8 @@ kafka-consumer-config:
   question-delete-consumer-group-id: question-delete-topic-consumer
   question-update-consumer-group-id: question-update-topic-consumer
 
+  question-request-consumer-group-id: question-request-topic-consumer
+
   course-service-calendar-event-consumer-group-id: course-service-calendar-event-consumer
 
   course-service-organization-create-request-group-id: course-service-organization-create-request-consumer
