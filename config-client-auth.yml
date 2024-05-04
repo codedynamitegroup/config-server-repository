@@ -82,7 +82,7 @@ kafka-consumer-config:
 
 springdoc:
   api-docs:
-    path: /api-docs
+    path: /api-docs/auth-service
   swagger-ui:
     path: /swagger-ui.html
 
