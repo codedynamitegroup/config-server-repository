@@ -18,6 +18,9 @@ auth-service:
   outbox-scheduler-initial-delay: 10000
 
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   cloud:
     loadbalancer:
       ribbon:
@@ -76,6 +79,13 @@ kafka-consumer-config:
   max-partition-fetch-bytes-boost-factor: 1
   poll-timeout-ms: 150
 
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    disable-swagger-default-url: true
+    path: /swagger-ui.html
 
 security:
   paths-to-ignore: /api-docs, /actuator/**
