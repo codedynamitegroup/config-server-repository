@@ -114,13 +114,8 @@ springdoc:
   api-docs:
     path: /api-docs
   swagger-ui:
-    path: /swagger-ui.html
-    # Update configUrl to point to the existing SpringDoc endpoint
-    configUrl: /api-docs/swagger-config
-    display-request-duration: true
-    groups-order: DESC
-    operationsSorter: method
     disable-swagger-default-url: true
+    path: /swagger-ui.html
 
 security:
   paths-to-ignore: /api-docs, /actuator/**
