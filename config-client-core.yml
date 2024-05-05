@@ -139,3 +139,6 @@ management:
     prometheus:
       cache.time-to-live: 1ms
 
+log:
+  appName: core-service
+

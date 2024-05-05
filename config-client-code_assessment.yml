@@ -100,3 +100,6 @@ management:
       show-details: always
     prometheus:
       cache.time-to-live: 1ms
+
+log:
+  appName: code-assessment-service
