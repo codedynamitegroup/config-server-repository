@@ -36,6 +36,14 @@ course-service:
   create-notification-scheduler-fixed-rate: 1800000
 
 spring:
+  kafka:
+    bootstrap-servers: localhost:19092, localhost:29092, localhost:39092
+  zipkin:
+    sender:
+      type: kafka
+  sleuth:
+    sampler:
+      probability: 1.0
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
