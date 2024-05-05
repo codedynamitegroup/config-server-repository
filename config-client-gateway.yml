@@ -1,5 +1,5 @@
 gateway-service:
-  timeout-ms: 3000
+  timeout-ms: 10000
   failure-rate-threshold: 50
   slow-call-rate-threshold: 50
   slow-call-duration-threshold: 50
@@ -32,8 +32,8 @@ spring:
             - RewritePath=/core-service/(?<path>.*), /$\{path}
             - name: RequestRateLimiter
               args:
-                redis-rate-limiter.replenishRate: 5
-                redis-rate-limiter.burstCapacity: 10
+                redis-rate-limiter.replenishRate: 50
+                redis-rate-limiter.burstCapacity: 100
                 key-resolver: "#{@authHeaderResolver}"
             - name: CircuitBreaker
               args:
@@ -47,8 +47,8 @@ spring:
             - RewritePath=/auth-service/(?<path>.*), /$\{path}
             - name: RequestRateLimiter
               args:
-                redis-rate-limiter.replenishRate: 5
-                redis-rate-limiter.burstCapacity: 10
+                redis-rate-limiter.replenishRate: 50
+                redis-rate-limiter.burstCapacity: 100
                 key-resolver: "#{@authHeaderResolver}"
             - name: CircuitBreaker
               args:
@@ -62,8 +62,8 @@ spring:
             - RewritePath=/course-service/(?<path>.*), /$\{path}
             - name: RequestRateLimiter
               args:
-                redis-rate-limiter.replenishRate: 5
-                redis-rate-limiter.burstCapacity: 10
+                redis-rate-limiter.replenishRate: 50
+                redis-rate-limiter.burstCapacity: 100
                 key-resolver: "#{@authHeaderResolver}"
             - name: CircuitBreaker
               args:
@@ -77,8 +77,8 @@ spring:
             - RewritePath=/code-assessment-service/(?<path>.*), /$\{path}
             - name: RequestRateLimiter
               args:
-                redis-rate-limiter.replenishRate: 5
-                redis-rate-limiter.burstCapacity: 10
+                redis-rate-limiter.replenishRate: 50
+                redis-rate-limiter.burstCapacity: 100
                 key-resolver: "#{@authHeaderResolver}"
             - name: CircuitBreaker
               args:
