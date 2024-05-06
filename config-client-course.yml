@@ -23,8 +23,8 @@ course-service:
   calendar-event-update-request-topic-name: calendar-event-update-request
   calendar-event-update-response-topic-name: calendar-event-update-response
 
-  outbox-scheduler-fixed-rate: 10000
-  outbox-scheduler-initial-delay: 10000
+  outbox-scheduler-fixed-rate: 2000
+  outbox-scheduler-initial-delay: 2000
 
   create-notification-scheduler-fixed-rate: 1800000
 

@@ -13,8 +13,8 @@ auth-service:
   core-organization-request-topic-name: core-organization-request
   course-organization-request-topic-name: course-organization-request
   organization-response-topic-name: organization-response
-  outbox-scheduler-fixed-rate: 10000
-  outbox-scheduler-initial-delay: 10000
+  outbox-scheduler-fixed-rate: 2000
+  outbox-scheduler-initial-delay: 2000
 
 spring:
   kafka:
