@@ -89,6 +89,9 @@ spring:
     port: 6379
     password: admin
 
+security:
+  paths-to-ignore: /actuator/**
+
 management:
   endpoints:
     web:
