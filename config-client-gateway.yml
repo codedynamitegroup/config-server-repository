@@ -41,14 +41,14 @@ spring:
         - id: core-service
           uri: lb://core-service
           predicates:
-            - Path=/core/**
+            - Path=/core-service/**
           filters:
-#            - RewritePath=/core-service/(?<path>.*), /$\{path}
-            - name: RequestRateLimiter
-              args:
-                redis-rate-limiter.replenishRate: 10
-                redis-rate-limiter.burstCapacity: 20
-                key-resolver: "#{@authHeaderResolver}"
+            - RewritePath=/core-service/(?<path>.*), /$\{path}
+#            - name: RequestRateLimiter
+#              args:
+#                redis-rate-limiter.replenishRate: 10
+#                redis-rate-limiter.burstCapacity: 20
+#                key-resolver: "#{@authHeaderResolver}"
             - name: CircuitBreaker
               args:
                 name: coreServiceCircuitBreaker
@@ -56,14 +56,14 @@ spring:
         - id: auth-service
           uri: lb://auth-service
           predicates:
-            - Path=/auth/**
+            - Path=/auth-service/**
           filters:
-#            - RewritePath=/auth-service/(?<path>.*), /$\{path}
-            - name: RequestRateLimiter
-              args:
-                redis-rate-limiter.replenishRate: 10
-                redis-rate-limiter.burstCapacity: 20
-                key-resolver: "#{@authHeaderResolver}"
+            - RewritePath=/auth-service/(?<path>.*), /$\{path}
+#            - name: RequestRateLimiter
+#              args:
+#                redis-rate-limiter.replenishRate: 10
+#                redis-rate-limiter.burstCapacity: 20
+#                key-resolver: "#{@authHeaderResolver}"
             - name: CircuitBreaker
               args:
                 name: authServiceCircuitBreaker
@@ -71,14 +71,14 @@ spring:
         - id: course-service
           uri: lb://course-service
           predicates:
-            - Path=/course/**
+            - Path=/course-service/**
           filters:
-#            - RewritePath=/course-service/(?<path>.*), /$\{path}
-            - name: RequestRateLimiter
-              args:
-                redis-rate-limiter.replenishRate: 10
-                redis-rate-limiter.burstCapacity: 20
-                key-resolver: "#{@authHeaderResolver}"
+            - RewritePath=/course-service/(?<path>.*), /$\{path}
+#            - name: RequestRateLimiter
+#              args:
+#                redis-rate-limiter.replenishRate: 10
+#                redis-rate-limiter.burstCapacity: 20
+#                key-resolver: "#{@authHeaderResolver}"
             - name: CircuitBreaker
               args:
                 name: courseServiceCircuitBreaker
@@ -86,14 +86,14 @@ spring:
         - id: code-assessment-service
           uri: lb://code-assessment-service
           predicates:
-            - Path=/code-assessment/**
+            - Path=/code-assessment-service/**
           filters:
-#            - RewritePath=/code-assessment-service/(?<path>.*), /$\{path}
-            - name: RequestRateLimiter
-              args:
-                redis-rate-limiter.replenishRate: 10
-                redis-rate-limiter.burstCapacity: 20
-                key-resolver: "#{@authHeaderResolver}"
+            - RewritePath=/code-assessment-service/(?<path>.*), /$\{path}
+#            - name: RequestRateLimiter
+#              args:
+#                redis-rate-limiter.replenishRate: 10
+#                redis-rate-limiter.burstCapacity: 20
+#                key-resolver: "#{@authHeaderResolver}"
             - name: CircuitBreaker
               args:
                 name: codeAssessmentServiceCircuitBreaker
