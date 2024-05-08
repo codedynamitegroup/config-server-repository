@@ -21,6 +21,8 @@ spring:
     loadbalancer:
       ribbon:
         enabled: false
+      cache:
+        enabled: false
     gateway:
       globalcors:
         corsConfigurations:
