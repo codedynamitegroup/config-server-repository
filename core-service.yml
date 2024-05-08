@@ -1,6 +1,13 @@
 server:
   port: 8181
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
+
 logging:
   level:
     com.backend.programming.learning.system: DEBUG
@@ -11,6 +18,9 @@ core-service:
 
   question-request-topic-name: core-question-request
   question-response-topic-name: core-question-response
+
+  question-request-code-assessment-topic-name: core-question-request-code-assessment
+  question-response-code-assessment-topic-name: core-question-response-code-assessment
 
   core-user-request-topic-name: core-user-request
   user-response-topic-name: user-response
@@ -25,11 +35,22 @@ core-service:
   outbox-scheduler-initial-delay: 2000
 
 spring:
+  application:
+    name: core-service
+  profiles:
+    active: core
+  config:
+    import: optional:configserver:${CONFIG_SERVER:http://localhost:9999}
+  cloud:
+    config:
+      username: spring_cloud_user
+      password: springCloud_Pwd!
   kafka:
     bootstrap-servers: localhost:19092, localhost:29092, localhost:39092
   zipkin:
     sender:
       type: kafka
+    base-url: http://localhost:9411
   sleuth:
     sampler:
       probability: 1.0
@@ -73,6 +94,7 @@ kafka-consumer-config:
   core-service-user-consumer-group-id: core-service-user-topic-consumer
 
   core-service-question-consumer-group-id: core-service-question-topic-consumer
+  core-service-code-question-consumer-group-id: core-service-code-question-topic-consumer
 
   core-service-calendar-event-consumer-group-id: core-service-calendar-event-topic-consumer
 
@@ -95,16 +117,6 @@ kafka-consumer-config:
   max-partition-fetch-bytes-default: 1048576
   max-partition-fetch-bytes-boost-factor: 1
   poll-timeout-ms: 150
-
-eureka:
-  instance:
-    preferIpAddress: true
-    hostname: eureka-0
-  client:
-    registerWithEureka: true
-    fetchRegistry: true
-    serviceUrl:
-      defaultZone: http://eureka-0.eureka.default.svc.cluster.local:8761/eureka
 
 springdoc:
   api-docs:
@@ -129,4 +141,3 @@ management:
 
 log:
   appName: core-service
-
