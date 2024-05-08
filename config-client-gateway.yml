@@ -15,9 +15,6 @@ spring:
   application:
     name: gateway-service
   cloud:
-    kubenetes:
-      config:
-        enabled: false
     loadbalancer:
       ribbon:
         enabled: false
