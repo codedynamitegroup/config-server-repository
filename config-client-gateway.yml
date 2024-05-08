@@ -15,6 +15,9 @@ spring:
   application:
     name: gateway-service
   cloud:
+    kubernetes:
+      ribbon:
+        enabled: false
     loadbalancer:
       ribbon:
         enabled: false
