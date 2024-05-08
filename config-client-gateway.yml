@@ -42,17 +42,17 @@ spring:
           uri: lb://core-service
           predicates:
             - Path=/core/**
-          filters:
+#          filters:
 #            - RewritePath=/core-service/(?<path>.*), /$\{path}
-            - name: RequestRateLimiter
-              args:
-                redis-rate-limiter.replenishRate: 10
-                redis-rate-limiter.burstCapacity: 20
-                key-resolver: "#{@authHeaderResolver}"
-            - name: CircuitBreaker
-              args:
-                name: coreServiceCircuitBreaker
-                fallbackUri: forward:/fallback/core-fallback
+#            - name: RequestRateLimiter
+#              args:
+#                redis-rate-limiter.replenishRate: 10
+#                redis-rate-limiter.burstCapacity: 20
+#                key-resolver: "#{@authHeaderResolver}"
+#            - name: CircuitBreaker
+#              args:
+#                name: coreServiceCircuitBreaker
+#                fallbackUri: forward:/fallback/core-fallback
         - id: auth-service
           uri: lb://auth-service
           predicates:
