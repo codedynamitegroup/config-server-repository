@@ -14,10 +14,11 @@ server:
 spring:
   application:
     name: gateway-service
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: admin
   cloud:
-    loadbalancer:
-      ribbon:
-        enabled: false
     gateway:
       discovery:
         locator:
@@ -84,10 +85,6 @@ spring:
               args:
                 name: codeAssessmentServiceCircuitBreaker
                 fallbackUri: forward:/fallback/code-assessment-fallback
-  redis:
-    host: 127.0.0.1
-    port: 6379
-    password: admin
 
 security:
   paths-to-ignore: /actuator/**
