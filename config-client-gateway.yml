@@ -21,8 +21,6 @@ spring:
     loadbalancer:
       ribbon:
         enabled: false
-      cache:
-        enabled: false
     gateway:
       globalcors:
         corsConfigurations:
@@ -106,7 +104,7 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
-    password: admin
+#    password: admin
 
 security:
   paths-to-ignore: /actuator/**
