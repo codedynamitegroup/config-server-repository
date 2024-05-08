@@ -41,9 +41,9 @@ spring:
         - id: core-service
           uri: lb://core-service
           predicates:
-            - Path=/core-service/**
+            - Path=/core/**
           filters:
-            - RewritePath=/core-service/(?<path>.*), /$\{path}
+#            - RewritePath=/core-service/(?<path>.*), /$\{path}
             - name: RequestRateLimiter
               args:
                 redis-rate-limiter.replenishRate: 10
@@ -56,9 +56,9 @@ spring:
         - id: auth-service
           uri: lb://auth-service
           predicates:
-            - Path=/auth-service/**
+            - Path=/auth/**
           filters:
-            - RewritePath=/auth-service/(?<path>.*), /$\{path}
+#            - RewritePath=/auth-service/(?<path>.*), /$\{path}
             - name: RequestRateLimiter
               args:
                 redis-rate-limiter.replenishRate: 10
@@ -71,9 +71,9 @@ spring:
         - id: course-service
           uri: lb://course-service
           predicates:
-            - Path=/course-service/**
+            - Path=/course/**
           filters:
-            - RewritePath=/course-service/(?<path>.*), /$\{path}
+#            - RewritePath=/course-service/(?<path>.*), /$\{path}
             - name: RequestRateLimiter
               args:
                 redis-rate-limiter.replenishRate: 10
@@ -86,9 +86,9 @@ spring:
         - id: code-assessment-service
           uri: lb://code-assessment-service
           predicates:
-            - Path=/code-assessment-service/**
+            - Path=/code-assessment/**
           filters:
-            - RewritePath=/code-assessment-service/(?<path>.*), /$\{path}
+#            - RewritePath=/code-assessment-service/(?<path>.*), /$\{path}
             - name: RequestRateLimiter
               args:
                 redis-rate-limiter.replenishRate: 10
