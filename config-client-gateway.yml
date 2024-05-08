@@ -18,21 +18,7 @@ spring:
     loadbalancer:
       ribbon:
         enabled: false
-#    gateway:
-#      globalcors:
-#        corsConfigurations:
-#          '[/**]':
-#            allowedOrigins: "*"
-#            allowedMethods:
-#              - GET
-#              - POST
-#              - PUT
-#              - PATCH
-#              - DELETE
-#            allowedHeaders:
-#              - "*"
-##            allowCredentials: true
-#            maxAge: 3600
+    gateway:
       discovery:
         locator:
           enabled: false
@@ -44,11 +30,11 @@ spring:
             - Path=/core-service/**
           filters:
             - RewritePath=/core-service/(?<path>.*), /$\{path}
-#            - name: RequestRateLimiter
-#              args:
-#                redis-rate-limiter.replenishRate: 10
-#                redis-rate-limiter.burstCapacity: 20
-#                key-resolver: "#{@authHeaderResolver}"
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 10
+                redis-rate-limiter.burstCapacity: 20
+                key-resolver: "#{@authHeaderResolver}"
             - name: CircuitBreaker
               args:
                 name: coreServiceCircuitBreaker
@@ -59,11 +45,11 @@ spring:
             - Path=/auth-service/**
           filters:
             - RewritePath=/auth-service/(?<path>.*), /$\{path}
-#            - name: RequestRateLimiter
-#              args:
-#                redis-rate-limiter.replenishRate: 10
-#                redis-rate-limiter.burstCapacity: 20
-#                key-resolver: "#{@authHeaderResolver}"
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 10
+                redis-rate-limiter.burstCapacity: 20
+                key-resolver: "#{@authHeaderResolver}"
             - name: CircuitBreaker
               args:
                 name: authServiceCircuitBreaker
@@ -74,11 +60,11 @@ spring:
             - Path=/course-service/**
           filters:
             - RewritePath=/course-service/(?<path>.*), /$\{path}
-#            - name: RequestRateLimiter
-#              args:
-#                redis-rate-limiter.replenishRate: 10
-#                redis-rate-limiter.burstCapacity: 20
-#                key-resolver: "#{@authHeaderResolver}"
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 10
+                redis-rate-limiter.burstCapacity: 20
+                key-resolver: "#{@authHeaderResolver}"
             - name: CircuitBreaker
               args:
                 name: courseServiceCircuitBreaker
@@ -89,11 +75,11 @@ spring:
             - Path=/code-assessment-service/**
           filters:
             - RewritePath=/code-assessment-service/(?<path>.*), /$\{path}
-#            - name: RequestRateLimiter
-#              args:
-#                redis-rate-limiter.replenishRate: 10
-#                redis-rate-limiter.burstCapacity: 20
-#                key-resolver: "#{@authHeaderResolver}"
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 10
+                redis-rate-limiter.burstCapacity: 20
+                key-resolver: "#{@authHeaderResolver}"
             - name: CircuitBreaker
               args:
                 name: codeAssessmentServiceCircuitBreaker
@@ -101,7 +87,7 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
-#    password: admin
+    password: admin
 
 security:
   paths-to-ignore: /actuator/**
