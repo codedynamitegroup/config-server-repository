@@ -33,10 +33,10 @@ spring:
 #              - "*"
 ##            allowCredentials: true
 #            maxAge: 3600
-#      discovery:
-#        locator:
-#          enabled: false
-#          lowerCaseServiceId: true
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
       routes:
         - id: core-service
           uri: lb://core-service
