@@ -35,7 +35,7 @@ spring:
 #            maxAge: 3600
       discovery:
         locator:
-          enabled: true
+          enabled: false
           lowerCaseServiceId: true
       routes:
         - id: core-service
