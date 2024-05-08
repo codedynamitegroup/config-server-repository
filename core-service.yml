@@ -39,12 +39,6 @@ spring:
     name: core-service
   profiles:
     active: core
-  config:
-    import: optional:configserver:${CONFIG_SERVER:http://localhost:9999}
-  cloud:
-    config:
-      username: spring_cloud_user
-      password: springCloud_Pwd!
   kafka:
     bootstrap-servers: localhost:19092, localhost:29092, localhost:39092
   zipkin:
