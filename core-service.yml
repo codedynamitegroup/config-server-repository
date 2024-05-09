@@ -116,7 +116,7 @@ springdoc:
   api-docs:
     path: /core/v3/api-docs
   swagger-ui:
-    path: /core/swagger-ui.html
+    path: /core/swagger-ui
 
 security:
   paths-to-ignore: /core/v3/api-docs, /actuator/**
