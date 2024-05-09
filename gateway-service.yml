@@ -9,6 +9,8 @@ eureka:
     preferIpAddress: true
 
 spring:
+  main:
+    web-application-type: reactive
   cloud:
     gateway:
       discovery:
