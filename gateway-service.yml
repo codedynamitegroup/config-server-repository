@@ -9,9 +9,10 @@ eureka:
     preferIpAddress: true
 
 spring:
-#  main:
-#    web-application-type: reactive
-#    allow-bean-definition-overriding: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: admin
   cloud:
     gateway:
       discovery:
@@ -81,6 +82,23 @@ springdoc:
       - name: code-assessment
         url: /swagger-ui/code-assessment
 
+security:
+  paths-to-ignore: /actuator/**
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure.include: health, prometheus, gateway
+      path-mapping.prometheus: metrics
+  endpoint:
+    health:
+      show-details: always
+    prometheus:
+      cache.time-to-live: 1ms
+
+log:
+  appName: gateway-service
 
 #gateway-service:
 #  timeout-ms: 3000
@@ -169,21 +187,3 @@ springdoc:
 #              args:
 #                name: codeAssessmentServiceCircuitBreaker
 #                fallbackUri: forward:/fallback/code-assessment-fallback
-#
-#security:
-#  paths-to-ignore: /actuator/**
-#
-#management:
-#  endpoints:
-#    web:
-#      base-path: /actuator
-#      exposure.include: health, prometheus, gateway
-#      path-mapping.prometheus: metrics
-#  endpoint:
-#    health:
-#      show-details: always
-#    prometheus:
-#      cache.time-to-live: 1ms
-#
-#log:
-#  appName: gateway-service
