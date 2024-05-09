@@ -11,7 +11,7 @@ eureka:
 spring:
   main:
     web-application-type: reactive
-    allow-bean-definition-overriding: true
+#    allow-bean-definition-overriding: true
   cloud:
     gateway:
       discovery:
