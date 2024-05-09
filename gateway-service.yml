@@ -52,9 +52,15 @@ spring:
             - Path=/v3/api-docs/**
           filters:
             - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
+        - id: swagger-ui
+          uri: http://localhost:${server.port}
+          predicates:
+            - Path=/swagger-ui/**
+          filters:
+            - RewritePath=/swagger-ui/(?<path>.*), /$\{path}/swagger-ui
 
 springdoc:
-  swagger-ui:
+  api-docs:
     urls:
       - name: core
         url: /v3/api-docs/core
