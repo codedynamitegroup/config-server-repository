@@ -9,11 +9,11 @@ eureka:
     preferIpAddress: true
 
 spring:
-#  cloud:
-#    gateway:
-#      discovery:
-#        locator:
-#          enabled: true
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
 #      routes:
 #        - id: core-service
 #          uri: lb://core-service
