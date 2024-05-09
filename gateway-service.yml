@@ -44,9 +44,9 @@ management:
       show-details: always
     prometheus:
       cache.time-to-live: 1ms
-    endpoint:
-      gateway:
-        enabled: true
+#    endpoint:
+#      gateway:
+#        enabled: true
 
 log:
   appName: gateway-service
