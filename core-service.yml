@@ -114,12 +114,12 @@ kafka-consumer-config:
 
 springdoc:
   api-docs:
-    path: /v3/api-docs
+    path: /core/v3/api-docs
   swagger-ui:
     path: /swagger-ui.html
 
 security:
-  paths-to-ignore: /v3/api-docs, /actuator/**
+  paths-to-ignore: /core/v3/api-docs, /actuator/**
 
 management:
   endpoints:
