@@ -1,4 +1,66 @@
+server:
+  port: 9098
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: core-service
+          uri: lb://core-service
+          predicates:
+            - Path=/core/**
+#          filters:
+#            - ContextPathRewritePath=/demo-microservices/employee/(?<path>.*), /$\{path}
+#            - RewritePath=/core/(?<path>.*), /$\{path}
+        - id: course-service
+          uri: lb://course-service
+          predicates:
+            - Path=/course/**
+#          filters:
+#            - ContextPathRewritePath=/demo-microservices/department/(?<path>.*), /$\{path}
+#            - RewritePath=/department/(?<path>.*), /$\{path}
+        - id: code-assessment-service
+          uri: lb://code-assessment-service
+          predicates:
+            - Path=/code-assessment/**
+#          filters:
+#            - ContextPathRewritePath=/demo-microservices/organization/(?<path>.*), /$\{path}
+#            - RewritePath=/organization/(?<path>.*), /$\{path}
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+      #          filters:
+      #            - ContextPathRewritePath=/demo-microservices/organization/(?<path>.*), /$\{path}
+      #            - RewritePath=/organization/(?<path>.*), /$\{path}
+        - id: openapi
+          uri: http://localhost:${server.port}
+          predicates:
+            - Path=/v3/api-docs/**
+          filters:
+            - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
+
+springdoc:
+  swagger-ui:
+    urls:
+      - name: core
+        url: /v3/api-docs/core
+      - name: auth
+        url: /v3/api-docs/auth
+      - name: course
+        url: /v3/api-docs/course
+      - name: code-assessment
+        url: /v3/api-docs/code-assessment
 
 
 #gateway-service:
