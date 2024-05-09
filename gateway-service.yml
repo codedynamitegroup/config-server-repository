@@ -70,6 +70,16 @@ springdoc:
         url: /v3/api-docs/course
       - name: code-assessment
         url: /v3/api-docs/code-assessment
+  swagger-ui:
+    urls:
+      - name: core
+        url: /swagger-ui/core
+      - name: auth
+        url: /swagger-ui/auth
+      - name: course
+        url: /swagger-ui/course
+      - name: code-assessment
+        url: /swagger-ui/code-assessment
 
 
 #gateway-service:
