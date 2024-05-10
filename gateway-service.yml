@@ -54,9 +54,11 @@ management:
       show-details: always
     prometheus:
       cache.time-to-live: 1ms
-    endpoint:
-      gateway:
-        enabled: true
+    gateway:
+      enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
 
 log:
   appName: gateway-service

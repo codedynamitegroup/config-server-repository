@@ -102,6 +102,9 @@ management:
       show-details: always
     prometheus:
       cache.time-to-live: 1ms
+  metrics:
+    tags:
+      application: ${spring.application.name}
 
 log:
   appName: auth-service
