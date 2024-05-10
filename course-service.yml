@@ -126,6 +126,11 @@ management:
     health:
       probes:
         enabled: true
+  endpoint:
+    health:
+      show-details: always
+    prometheus:
+      cache.time-to-live: 1ms
   info:
     env:
       enabled: true

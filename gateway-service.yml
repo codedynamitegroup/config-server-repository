@@ -57,6 +57,10 @@ management:
       probes:
         enabled: true
   endpoint:
+    health:
+      show-details: always
+    prometheus:
+      cache.time-to-live: 1ms
     gateway:
       enabled: true
   info:
