@@ -1,3 +1,11 @@
+server:
+  port: 9098
+
+logging:
+  level.root: DEBUG
+  level:
+    com.backend.programming.learning.system.gateway.service: DEBUG
+
 gateway-service:
   timeout-ms: 10000
   failure-rate-threshold: 50
@@ -8,9 +16,6 @@ gateway-service:
   min-number-of-calls: 10
   wait-duration-in-open-state: 60000
 
-server:
-  port: 9098
-
 eureka:
   client:
     serviceUrl:
@@ -18,27 +23,29 @@ eureka:
   instance:
     preferIpAddress: true
 
-springdoc:
-  api-docs:
-    urls:
-      - name: core
-        url: /v3/api-docs/core
-      - name: auth
-        url: /v3/api-docs/auth
-      - name: course
-        url: /v3/api-docs/course
-      - name: code-assessment
-        url: /v3/api-docs/code-assessment
-  swagger-ui:
-    urls:
-      - name: core
-        url: /swagger-ui/core
-      - name: auth
-        url: /swagger-ui/auth
-      - name: course
-        url: /swagger-ui/course
-      - name: code-assessment
-        url: /swagger-ui/code-assessment
+spring:
+  application:
+    name: gateway-service
+  config:
+    import: "optional:configserver:${CONFIG_SERVER:http://localhost:9999}"
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lowerCaseServiceId: true
+      httpclient:
+        connect-timeout: 1000
+        response-timeout: 10s
+    config:
+      username: spring_cloud_user
+      password: springCloud_Pwd!
+  data:
+    redis:
+      connect-timeout: 2s
+      host: ${REDIS_HOST:localhost}
+      port: 6379
+      timeout: 1s
 
 security:
   paths-to-ignore: /actuator/**
@@ -69,110 +76,24 @@ management:
     tags:
       application: ${spring.application.name}
 
-#management:
-#  endpoints:
-#    web:
-#      base-path: /actuator
-#      exposure.include: health, prometheus, gateway
-#      path-mapping.prometheus: metrics
-#  endpoint:
-#    health:
-#      show-details: always
-#    prometheus:
-#      cache.time-to-live: 1ms
-#    gateway:
-#      enabled: true
-#  metrics:
-#    tags:
-#      application: ${spring.application.name}
-
-log:
-  appName: gateway-service
-
-#gateway-service:
-#  timeout-ms: 3000
-#  failure-rate-threshold: 50
-#  slow-call-rate-threshold: 50
-#  slow-call-duration-threshold: 50
-#  permitted-num-of-calls-in-half-open-state: 10
-#  sliding-window-size: 10
-#  min-number-of-calls: 10
-#  wait-duration-in-open-state: 60000
-#
-#server:
-#  port: 9098
-#
-#spring:
-#  application:
-#    name: gateway-service
-#  redis:
-#    host: 127.0.0.1
-#    port: 6379
-#    password: admin
-#  cloud:
-#    gateway:
-#      discovery:
-#        locator:
-#          enabled: false
-#          lowerCaseServiceId: true
-#      routes:
-#        - id: core-service
-#          uri: lb://core-service
-#          predicates:
-#            - Path=/core/**
-#          filters:
-##            - RewritePath=/core-service/(?<path>.*), /$\{path}
-#            - name: RequestRateLimiter
-#              args:
-#                redis-rate-limiter.replenishRate: 10
-#                redis-rate-limiter.burstCapacity: 20
-#                key-resolver: "#{@authHeaderResolver}"
-#            - name: CircuitBreaker
-#              args:
-#                name: coreServiceCircuitBreaker
-#                fallbackUri: forward:/fallback/core-fallback
-#        - id: auth-service
-#          uri: lb://auth-service
-#          predicates:
-#            - Path=/auth/**
-#          filters:
-##            - RewritePath=/auth-service/(?<path>.*), /$\{path}
-#            - name: RequestRateLimiter
-#              args:
-#                redis-rate-limiter.replenishRate: 10
-#                redis-rate-limiter.burstCapacity: 20
-#                key-resolver: "#{@authHeaderResolver}"
-#            - name: CircuitBreaker
-#              args:
-#                name: authServiceCircuitBreaker
-#                fallbackUri: forward:/fallback/auth-fallback
-#        - id: course-service
-#          uri: lb://course-service
-#          predicates:
-#            - Path=/course/**
-#          filters:
-##            - RewritePath=/course-service/(?<path>.*), /$\{path}
-#            - name: RequestRateLimiter
-#              args:
-#                redis-rate-limiter.replenishRate: 10
-#                redis-rate-limiter.burstCapacity: 20
-#                key-resolver: "#{@authHeaderResolver}"
-#            - name: CircuitBreaker
-#              args:
-#                name: courseServiceCircuitBreaker
-#                fallbackUri: forward:/fallback/course-fallback
-#        - id: code-assessment-service
-#          uri: lb://code-assessment-service
-#          predicates:
-#            - Path=/code-assessment/**
-#          filters:
-##            - RewritePath=/code-assessment-service/(?<path>.*), /$\{path}
-#            - name: RequestRateLimiter
-#              args:
-#                redis-rate-limiter.replenishRate: 10
-#                redis-rate-limiter.burstCapacity: 20
-#                key-resolver: "#{@authHeaderResolver}"
-#            - name: CircuitBreaker
-#              args:
-#                name: codeAssessmentServiceCircuitBreaker
-#                fallbackUri: forward:/fallback/code-assessment-fallback
+springdoc:
+  api-docs:
+    urls:
+      - name: core
+        url: /v3/api-docs/core
+      - name: auth
+        url: /v3/api-docs/auth
+      - name: course
+        url: /v3/api-docs/course
+      - name: code-assessment
+        url: /v3/api-docs/code-assessment
+  swagger-ui:
+    urls:
+      - name: core
+        url: /swagger-ui/core
+      - name: auth
+        url: /swagger-ui/auth
+      - name: course
+        url: /swagger-ui/course
+      - name: code-assessment
+        url: /swagger-ui/code-assessment
