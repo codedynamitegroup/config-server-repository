@@ -37,20 +37,6 @@ core-service:
 spring:
   application:
     name: core-service
-  profiles:
-    active: core
-  kafka:
-    bootstrap-servers: localhost:19092, localhost:29092, localhost:39092
-  zipkin:
-    sender:
-      type: kafka
-    base-url: http://localhost:9411
-  sleuth:
-    sampler:
-      probability: 1.0
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
   datasource:
     url: jdbc:postgresql://localhost:5432/core-service?currentSchema=public&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
     username: postgres

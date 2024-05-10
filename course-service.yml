@@ -5,7 +5,6 @@ logging:
   level:
     com.backend.programming.learning.system: INFO
 
-
 socket-config:
   port: 8085
   host: 172.16.12.5
@@ -29,21 +28,6 @@ course-service:
   create-notification-scheduler-fixed-rate: 1800000
 
 spring:
-  kafka:
-    bootstrap-servers: localhost:19092, localhost:29092, localhost:39092
-  zipkin:
-    sender:
-      type: kafka
-  sleuth:
-    sampler:
-      probability: 1.0
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
-  cloud:
-    loadbalancer:
-      ribbon:
-        enabled: false
   datasource:
     url: jdbc:postgresql://localhost:5432/course-service?currentSchema=public&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
     username: postgres
@@ -136,21 +120,6 @@ management:
   metrics:
     tags:
       application: ${spring.application.name}
-
-#management:
-#  endpoints:
-#    web:
-#      base-path: /actuator
-#      exposure.include: health, prometheus
-#      path-mapping.prometheus: metrics
-#  endpoint:
-#    health:
-#      show-details: always
-#    prometheus:
-#      cache.time-to-live: 1ms
-#  metrics:
-#    tags:
-#      application: ${spring.application.name}
 
 log:
   appName: course-service

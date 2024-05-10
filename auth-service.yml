@@ -17,21 +17,6 @@ auth-service:
   outbox-scheduler-initial-delay: 2000
 
 spring:
-  kafka:
-    bootstrap-servers: localhost:19092, localhost:29092, localhost:39092
-  zipkin:
-    sender:
-      type: kafka
-  sleuth:
-    sampler:
-      probability: 1.0
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
-  cloud:
-    loadbalancer:
-      ribbon:
-        enabled: false
   datasource:
     url: jdbc:postgresql://localhost:5432/auth-service?currentSchema=public&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
     username: postgres
