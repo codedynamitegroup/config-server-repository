@@ -39,9 +39,8 @@ spring:
         response-timeout: 10s
   data:
     redis:
-      host: redis-13960.c9.us-east-1-2.ec2.redns.redis-cloud.com
-      port: 13960
-      password: N7qkA39hffMIU9B99uFjAptksNmt1ALG
+      host: ${REDIS_HOST:localhost}
+      port: 6379
       timeout: 15s
       connect-timeout: 15s
 
