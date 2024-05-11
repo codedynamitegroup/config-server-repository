@@ -37,6 +37,8 @@ course-service:
   create-notification-scheduler-fixed-rate: 1800000
 
 spring:
+  application:
+    name: course-service
   datasource:
     url: jdbc:postgresql://localhost:5432/course-service?currentSchema=public&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
     username: postgres
