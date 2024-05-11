@@ -6,6 +6,15 @@ logging:
   level:
     com.backend.programming.learning.system.gateway.service: DEBUG
 
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
+
 gateway-service:
   timeout-ms: 10000
   failure-rate-threshold: 50
@@ -15,13 +24,6 @@ gateway-service:
   sliding-window-size: 10
   min-number-of-calls: 10
   wait-duration-in-open-state: 60000
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
-  instance:
-    preferIpAddress: true
 
 spring:
   application:

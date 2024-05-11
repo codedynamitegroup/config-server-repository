@@ -1,16 +1,18 @@
 server:
   port: 8181
 
+logging:
+  level:
+    com.backend.programming.learning.system: DEBUG
+
 eureka:
   client:
+    fetchRegistry: true
+    registerWithEureka: true
     serviceUrl:
       defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
   instance:
     preferIpAddress: true
-
-logging:
-  level:
-    com.backend.programming.learning.system: DEBUG
 
 core-service:
   code-question-update-response-from-core-service-topic-name: code-question-update-response-from-core-service
@@ -130,19 +132,6 @@ management:
   metrics:
     tags:
       application: ${spring.application.name}
-#  endpoints:
-#    web:
-#      base-path: /actuator
-#      exposure.include: health, prometheus
-#      path-mapping.prometheus: metrics
-#  endpoint:
-#    health:
-#      show-details: always
-#    prometheus:
-#      cache.time-to-live: 1ms
-#  metrics:
-#    tags:
-#      application: ${spring.application.name}
 
 log:
   appName: core-service
