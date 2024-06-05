@@ -16,14 +16,14 @@ eureka:
     preferIpAddress: true
 
 gateway-service:
-  timeout-ms: 120000
+  timeout-ms: 60000
   failure-rate-threshold: 80
   slow-call-rate-threshold: 80
   slow-call-duration-threshold: 50
   permitted-num-of-calls-in-half-open-state: 100
   sliding-window-size: 50
   min-number-of-calls: 10
-  wait-duration-in-open-state: 5000
+  wait-duration-in-open-state: 30000
 
 spring:
   application:
