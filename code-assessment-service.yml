@@ -49,12 +49,6 @@ spring:
           issuer-uri: http://${keycloak.domain}/realms/${keycloak.realm}
   application:
     name: code-assessment-service
-  config:
-    import: optional:configserver:${CONFIG_SERVER:http://localhost:9999}
-  cloud:
-    config:
-      username: spring_cloud_user
-      password: springCloud_Pwd!
   datasource:
     url: jdbc:postgresql://localhost:5432/code-assessment-service?currentSchema=public&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
     username: postgres
